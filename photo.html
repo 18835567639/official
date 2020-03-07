@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html rem="750">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="css/base.css">
+		<title>验证结果</title>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+	</head>
+	<body>
+		<div class="box" style="width: 100vw;height: 100vh;">
+			<img style="width: 100%;height: 100%;display: block;" class="imgs" src="" alt="">
+		</div>
+	</body>
+	<script>
+		var u = navigator.userAgent;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		alert('是否是Android：'+isAndroid);
+		alert('是否是iOS：'+isiOS);
+		var img = document.querySelector('.imgs')
+		var ind = getUrlQueryString('index');
+		let xhr = new XMLHttpRequest();
+		xhr.open('post','https://www.c65z45.cn/api/Reserve/GetSignature')
+		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+		xhr.send('Token=B68DE9D1F8584D7099BCE47144D0351C',false)
+		xhr.onreadystatechange = function(){
+			//4 服务器响应完成
+			if(xhr.readyState==4){
+				if(xhr.status==200){
+					res = JSON.parse(xhr.response)    //数据
+					wx.config({
+						debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+						appId: 'wx35bc1586004b5243', // 必填，公众号的唯一标识
+						timestamp: res.Data.TimeCost, // 必填，生成签名的时间戳
+						nonceStr: res.Data.NonceStr, // 必填，生成签名的随机串
+						signature: res.Data.Signature,// 必填，签名
+						jsApiList: [] // 必填，需要使用的JS接口列表
+					});
+				}else{
+					alert('加载失败')
+				}
+			}
+		}
+		wx.ready(function() {
+			wx.getLocalImgData({
+			localId:ind,
+				success: function (res){
+					img.setAttribute("src",res.localData)
+				},
+				fail:function(err){
+					alert(err)
+				}
+			})
+		})
+		function getUrlQueryString(names, urls) {
+			urls = urls || window.location.href;
+			urls && urls.indexOf("?") > -1 ? urls = urls.substring(urls.indexOf("?") + 1) : "";
+			var reg = new RegExp("(^|&)" + names + "=([^&]*)(&|$)", "i");
+			var r = urls ? urls.match(reg) : window.location.search.substr(1).match(reg);
+			if (r != null && r[2] != "")
+				return unescape(r[2]);
+			return null;
+		}
+	</script>
+</html>

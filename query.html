@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html rem="750">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/base.css">
+		<title>验证结果</title>
+    </head>
+    <style>
+        html{
+            overflow: hidden;
+        }
+        .box{
+			width: 100vw;
+			height: 100vh;
+			background-image:url(./img/bj.jpg);
+			background-size:auto 100%;
+            background-position:center center;
+            position: relative;
+        }
+        ul{
+            position: absolute;
+            top:0;
+            left: 0;
+            right: 0;
+            bottom: 1rem;
+            margin: auto;
+            width: 60%;
+            height: 6rem;
+            background: rgba(123, 223, 213, 0.5);
+            border-radius: 0.3rem;
+            padding: 0.3rem;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        li{
+            width: 100%;
+            height: 1rem;
+            padding: 0.2rem 0;
+        }
+        li>div{
+            font-size: 0.4rem;
+            color: #000;
+        }
+        li>p{
+            font-size: 0.35rem;
+            color: #000;
+            margin-left: 0.3rem;
+        }
+        .pay{
+            width: 2rem;
+            height: 0.8rem;
+            color: #fff;
+            border-radius: 0.1rem;
+            text-align: center;
+            line-height: 0.8rem;
+            background: yellowgreen;
+            margin: 0 auto;
+        }
+    </style>
+	<body>
+        <div class="box">
+            <ul>
+                <li><div>姓名:</div><p>高佳琪</p></li>
+                <li><div>证件号码:</div><p>140424199707073639</p></li>
+                <li><div>体检编号:</div><p>152687457895452156</p></li>
+                <li><div class="pay" onclick="pay()">去支付</div></li>
+            </ul>
+        </div>
+	</body>
+	<script>
+        function pay(){
+            window.location.href = 'result.html'
+        }
+	</script>
+</html>

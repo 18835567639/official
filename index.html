@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html rem="750">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="css/base.css">
+		<title>车驾管体检验证缴费</title>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+	</head>
+	<style>
+		.box{
+			width: 100vw;
+			height: 100vh;
+			background-image:url(./img/bj.jpg);
+			background-size:auto 100%;
+			background-position:center center;
+		}
+		html{
+			overflow: hidden;
+		}
+		ul{
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			width: 5rem;
+			height: 100%;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		ul>li:last-child{
+			width: 3rem;
+			height: 3rem;
+			background: rgba(123, 223, 213, 0.5);
+			margin: 0.5rem 0;
+			border-radius: 0.1rem;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-size: 0.3rem;
+		}
+		li>img{
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+		li>p{
+			font-size: 0.4rem;
+		}
+		li>input{
+			width: 3rem;
+			height: 0.5rem;
+		}
+	</style>
+	<body>
+		<div class="box">
+			<ul>
+				<li><input name="money" type="string" placeholder="身份证号码"><br></li>
+				<li onclick="idcard()"><img src="./img/人脸识别.png"><p>点击查询记录</p></li>
+			</ul>
+		</div>
+	</body>
+	<script>
+		function idcard(){
+			let input = document.getElementsByName('money')[0]
+			let value  =input.value
+			if(value.length == 18){
+				window.location.href = 'query.html'
+			}else{
+				alert('请输入正确的身份证号码')
+			}
+		}
+	</script>
+</html>

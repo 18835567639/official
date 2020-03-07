@@ -1,0 +1,44 @@
+.box{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+html{
+    overflow: hidden;
+}
+.box>.img{
+    width: 100%;
+    height: 100%;
+    background-image:url(../img/bj.jpg);
+    background-size:auto 100%;
+    background-position:center center;
+}
+ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 3rem;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+ul>li{
+    width: 100%;
+    height: 3rem;
+    background: rgba(123, 223, 213, 0.5);
+    margin: 0.5rem 0;
+    border-radius: 0.1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.3rem;
+}
+li>img{
+    width: 1.5rem;
+    height: 1.5rem;
+}

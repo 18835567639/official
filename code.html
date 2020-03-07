@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html rem="750">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="css/base.css">
+		<title>验证结果</title>
+	</head>
+	<body>
+		<div class="box" style="width: 100vw;height: 100vh;">
+			
+		</div>
+	</body>
+	<script>
+		var box = document.querySelector('.box')
+        var code = getUrlQueryString('index')
+        box.innerText = code
+        function getUrlQueryString(names, urls) {
+			urls = urls || window.location.href;
+			urls && urls.indexOf("?") > -1 ? urls = urls.substring(urls.indexOf("?") + 1) : "";
+			var reg = new RegExp("(^|&)" + names + "=([^&]*)(&|$)", "i");
+			var r = urls ? urls.match(reg) : window.location.search.substr(1).match(reg);
+			if (r != null && r[2] != "")
+				return unescape(r[2]);
+			return null;
+		}
+	</script>
+</html>
